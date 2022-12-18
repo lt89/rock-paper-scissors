@@ -6,12 +6,26 @@
 </head>
 <body>
   <script>
-    function getComputerChoice() {
-        let array = ["Rock", "Paper", "Scissors"];
-        
-    }
-
+   
+  function getComputerChoice () {
+    let computerOptions = ["Rock", "Paper", "Scissors"];
+    computerRandomize = Math.floor(Math.random() * computerOptions.length) + 1
     
+    if (computerRandomize === 1){
+      return "Rock";
+    }
+    else if (computerRandomize === 2){
+      return "Paper"
+    }
+    else if (computerRandomize === 3){
+      return "Scissors"
+    }
+  }
+  let computerPlay = getComputerChoice();
+  console.log(computerPlay);
+
+
+  
   </script>
 </body>
 </html>
