@@ -7,6 +7,18 @@
 <body>
   <script>
    
+  const userInput = prompt("Enter Rock, Paper or Scissors to play");
+  console.log("User entered:", userInput);
+  
+ function caseFix(userInput) {
+  let playerCase = userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
+  console.log("You are playing with:", playerCase);
+  return(playerCase); //Outputs playerCase from function to rest of code scope. 
+ }
+
+ let playerSelection = caseFix(userInput); //Run the caseFix function. Set playerSelection to the output of the case fix function (via return)
+
+  
   function getComputerChoice () {
     let computerOptions = ["Rock", "Paper", "Scissors"];
     computerRandomize = Math.floor(Math.random() * computerOptions.length) + 1
@@ -21,11 +33,51 @@
       return "Scissors"
     }
   }
-  let computerPlay = getComputerChoice();
-  console.log(computerPlay);
+  const computerSelection = getComputerChoice();
+  console.log("The computer is playing with:", computerSelection);
+
+  function playRound (computerSelection, playerSelection){
+    if (playerSelection === "Rock") {
+      if (computerSelection === "Rock") {
+            console.log("It's a tie!");
+      }
+      if (computerSelection === "Paper") {
+            console.log("Paper beats Rock. Bad luck! I win");
+      }
+      if (computerSelection === "Scissors") {
+            console.log("Rock beats Scissors. Bad luck! I win");
+      }
+    }
+
+    if (playerSelection === "Paper") {
+      if (computerSelection === "Paper") {
+            console.log("It's a tie!");
+      }
+      if (computerSelection === "Rock") {
+            console.log("Paper beats Rock. Well done! You win");
+      }
+      if (computerSelection === "Scissors") {
+            console.log("Scissors beats Paper. Bad luck! I win");
+      }
+    }
+
+    if (playerSelection === "Scissors") {
+      if (computerSelection === "Scissors") {
+            console.log("It's a tie!");
+      }
+      if (computerSelection === "Rock") {
+            console.log("Rock beats Scissors. Bad luck! I win");
+      }
+      if (computerSelection === "Paper") {
+            console.log("Scissors beats Paper. Well done! You win");
+      }
+    }
+  }
+    
+playRound(computerSelection, playerSelection);
 
 
-  
-  </script>
+
+</script>
 </body>
 </html>
