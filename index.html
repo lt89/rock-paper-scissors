@@ -6,9 +6,12 @@
 </head>
 <body>
   <script>
-   
-  const userInput = prompt("Enter Rock, Paper or Scissors to play");
-  console.log("User entered:", userInput);
+
+let computerScore = 0; //Reset computer score.
+let playerScore = 0; //Reset player score. 
+  
+const userInput = prompt("Enter Rock, Paper or Scissors to play");
+console.log("User entered:", userInput);
   
  function caseFix(userInput) {
   let playerCase = userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
@@ -19,7 +22,7 @@
  let playerSelection = caseFix(userInput); //Run the caseFix function. Set playerSelection to the output of the case fix function (via return)
 
   
-  function getComputerChoice () {
+ function getComputerChoice () {
     let computerOptions = ["Rock", "Paper", "Scissors"];
     computerRandomize = Math.floor(Math.random() * computerOptions.length) + 1
     
@@ -27,56 +30,87 @@
       return "Rock";
     }
     else if (computerRandomize === 2){
-      return "Paper"
+      return "Paper";
     }
     else if (computerRandomize === 3){
-      return "Scissors"
+      return "Scissors";
     }
   }
   const computerSelection = getComputerChoice();
   console.log("The computer is playing with:", computerSelection);
 
-  function playRound (computerSelection, playerSelection){
+  function playRound(computerSelection, playerSelection){ //Play one round function. 
+    
     if (playerSelection === "Rock") {
       if (computerSelection === "Rock") {
-            console.log("It's a tie!");
+        console.log("It's a tie!");
       }
       if (computerSelection === "Paper") {
-            console.log("Paper beats Rock. Bad luck! I win");
+        console.log("Paper beats Rock. Bad luck! I win");
+        computerWin();
+        return(computerWin); 
       }
-      if (computerSelection === "Scissors") {
-            console.log("Rock beats Scissors. Bad luck! I win");
+      if (computerSelection === "Scissors") {   
+        console.log("Rock beats Scissors. Well done! You win");
+        playerWin();
+        return(playerWin);
       }
     }
-
+    
     if (playerSelection === "Paper") {
       if (computerSelection === "Paper") {
-            console.log("It's a tie!");
+        console.log("It's a tie!");
       }
       if (computerSelection === "Rock") {
-            console.log("Paper beats Rock. Well done! You win");
+        console.log("Paper beats Rock. Well done! You win");
+        playerWin();
+        return(playerWin);
       }
       if (computerSelection === "Scissors") {
-            console.log("Scissors beats Paper. Bad luck! I win");
+        console.log("Scissors beats Paper. Bad luck! I win");
+        computerWin();
+        return(computerWin); 
       }
     }
 
     if (playerSelection === "Scissors") {
       if (computerSelection === "Scissors") {
-            console.log("It's a tie!");
+        console.log("It's a tie!");
       }
-      if (computerSelection === "Rock") {
-            console.log("Rock beats Scissors. Bad luck! I win");
+      if (computerSelection === "Rock") { 
+        console.log("Rock beats Scissors. Bad luck! I win");
+        computerWin();
+        return(computerWin); 
       }
       if (computerSelection === "Paper") {
-            console.log("Scissors beats Paper. Well done! You win");
+        console.log("Scissors beats Paper. Well done! You win");
+        playerWin();
+        return(playerWin);
       }
     }
   }
     
 playRound(computerSelection, playerSelection);
 
+function computerWin() {
+computerScore = computerScore + 1;
+console.log("I Won!")
+}
 
+function playerWin() {
+playerScore = playerScore + 1;
+console.log("You Won!")
+}
+console.log("Computer Score:", computerScore, " /5", "\nPlayer Score:", playerScore, " /5");
+
+
+
+
+//  function playRound(computerSelection, playerSelection) {
+
+// }
+
+// console.log(playRound);
 
 </script>
 </body>
