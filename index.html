@@ -7,22 +7,33 @@
 <body>
   <script>
 
+function game() {
+  
+  for (let i = 0; i < 5; i++) {
+    console.log("Round: ", i + 1);
+    playRound(i);
+}
+}
+
 let computerScore = 0; //Reset computer score.
 let playerScore = 0; //Reset player score. 
+
+game(); //Play round. 
+
+function playRound(){ //Play one round function. 
+
+  const userInput = prompt("Enter Rock, Paper or Scissors to play");
   
-const userInput = prompt("Enter Rock, Paper or Scissors to play");
-console.log("User entered:", userInput);
-  
- function caseFix(userInput) {
-  let playerCase = userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
-  console.log("You are playing with:", playerCase);
-  return(playerCase); //Outputs playerCase from function to rest of code scope. 
- }
+    function caseFix(userInput) {
+      let playerCase = userInput[0].toUpperCase() + userInput.slice(1).toLowerCase();
+      console.log("You are playing with:", playerCase);
+      return(playerCase); //Outputs playerCase from function to rest of code scope. 
+    }
 
  let playerSelection = caseFix(userInput); //Run the caseFix function. Set playerSelection to the output of the case fix function (via return)
 
   
- function getComputerChoice () {
+function getComputerChoice() {
     let computerOptions = ["Rock", "Paper", "Scissors"];
     computerRandomize = Math.floor(Math.random() * computerOptions.length) + 1
     
@@ -38,10 +49,8 @@ console.log("User entered:", userInput);
   }
   const computerSelection = getComputerChoice();
   console.log("The computer is playing with:", computerSelection);
-
-  function playRound(computerSelection, playerSelection){ //Play one round function. 
     
-    if (playerSelection === "Rock") {
+  if (playerSelection === "Rock") {
       if (computerSelection === "Rock") {
         console.log("It's a tie!");
       }
@@ -55,6 +64,7 @@ console.log("User entered:", userInput);
         playerWin();
         return(playerWin);
       }
+      
     }
     
     if (playerSelection === "Paper") {
@@ -71,6 +81,7 @@ console.log("User entered:", userInput);
         computerWin();
         return(computerWin); 
       }
+      
     }
 
     if (playerSelection === "Scissors") {
@@ -88,9 +99,9 @@ console.log("User entered:", userInput);
         return(playerWin);
       }
     }
-  }
     
-playRound(computerSelection, playerSelection);
+  }
+  
 
 function computerWin() {
 computerScore = computerScore + 1;
@@ -106,11 +117,7 @@ console.log("Computer Score:", computerScore, " /5", "\nPlayer Score:", playerSc
 
 
 
-//  function playRound(computerSelection, playerSelection) {
 
-// }
-
-// console.log(playRound);
 
 </script>
 </body>
